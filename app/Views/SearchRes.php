@@ -1,23 +1,18 @@
-<?= $this->extend('Templates/MainTemplate'); ?>
+<?= $this->extend('Templates/MainTemplate') ?>   
 
-<?= $this->section('content'); ?>
+<?= $this->section('content') ?>
     <main id="main" class="main">
 
         <div class="pagetitle">
             <h1>Dashboard</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item active"><a href="/dashboard">Dashboard</a></li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
 
         <section class="section">
-            <form class="d-flex mb-3" action="/cari" method="get" role="search">
-                <input class="form-control me-2" type="search" name="cari" placeholder="Cari Berdasarkan Nama Barang atau Harga Limit" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Cari</button>
-            </form>
-            <br>
             <div class="row">
             <?php foreach ($lelang as $data) { ?>
                 <a href="/info/<?= $data['id_lelang']?>">
@@ -42,9 +37,29 @@
                     </div>
                 </div> -->
             </div>
-            <?= $pager->links('lelang', 'bootstrap_full'); ?>
+            <?= $pager->links('note', 'bootstrap_full'); ?>
         </section>
 
     </main><!-- End #main -->
-    
-<?= $this->endSection(); ?>
+        <!-- <form action="/delete/" method="post" class="d-inline">
+            <?= csrf_field() ?>
+            <input type="hidden" name="_method" value="DELETE">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title">Peringatan !</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>Apakah Anda Yakin Ingin Menghapus Catatan ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Ya</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </form> -->
+<?= $this->endSection() ?>
